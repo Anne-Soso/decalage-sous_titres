@@ -15,14 +15,14 @@
     $replace='$1000';
     preg_match($pattern,$line,$match);
     if($match){
-      $hour_begin=intval(substr($line,1,1));
+      $hour_begin=intval(substr($line,0,2));
       $min_begin=intval(substr($line,3,2));
       $sec_begin=intval(substr($line,6,2));
       $milli_begin=intval(substr($line,9,3));
-      $hour_end=intval(substr($line,15,1));
-      $min_end=intval(substr($line,18,2));
-      $sec_end=intval(substr($line,21,2));
-      $milli_end=intval(substr($line,24,3));
+      $hour_end=intval(substr($line,17,2));
+      $min_end=intval(substr($line,20,2));
+      $sec_end=intval(substr($line,23,2));
+      $milli_end=intval(substr($line,26,3));
 
       $total_begin=$milli_begin+$sec_begin*1000+$min_begin*60000+$hour_begin*60*60000+$decalage;
       $sec_begin=($total_begin/1000)%60;
@@ -35,8 +35,6 @@
       $min_end=($total_end/(1000*60))%60;
       $hour_end=($total_end/(1000*60*60))%24;
       $milli_end=$total_end%1000;
-
-
 
       // if($milli_begin%1000>0){
       //   $milli_begin=$milli_begin%1000;
